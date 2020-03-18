@@ -13,9 +13,7 @@ const routes: Routes = [
   { path: '', component: LoginUserComponent },
   { path: 'login', component: LoginUserComponent },
   { path: 'register-user', component: RegisterUserComponent },
-  {
-    path: 'resend-register-token', component: ResendRegistrationTokenComponent
-  },
+  { path: 'resend-register-token', component: ResendRegistrationTokenComponent},
   { path: 'welcome', component: WelcomeComponent },
   { path: 'list-user', component: ListUserComponent },
   { path: 'edit-user/:id', component: EditUserComponent }

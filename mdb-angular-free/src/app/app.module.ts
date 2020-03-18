@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ResendRegistrationTokenComponent } from './components/resend-registration-token/resend-registration-token.component';
@@ -18,6 +18,8 @@ import { DeleteUserModalComponent } from './shared/components/modals/delete-user
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './shared/components/navigation/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './core/api.service';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,11 @@ import { FooterComponent } from './shared/components/navigation/footer/footer.co
     RouterModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule, 
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
