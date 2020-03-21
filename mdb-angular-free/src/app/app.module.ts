@@ -18,8 +18,11 @@ import { DeleteUserModalComponent } from './shared/components/modals/delete-user
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './shared/components/navigation/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiService } from './core/api.service';
+import { InterceptorService } from './core/interceptor.service';
+import { AuthGuard } from './core/guards/auth.guard';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -41,11 +44,23 @@ import { ApiService } from './core/api.service';
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule, 
+    HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-top-center'
+    })
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

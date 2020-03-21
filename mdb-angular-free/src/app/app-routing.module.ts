@@ -6,6 +6,7 @@ import { ResendRegistrationTokenComponent } from './components/resend-registrati
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 
 
@@ -14,9 +15,9 @@ const routes: Routes = [
   { path: 'login', component: LoginUserComponent },
   { path: 'register-user', component: RegisterUserComponent },
   { path: 'resend-register-token', component: ResendRegistrationTokenComponent},
-  { path: 'welcome', component: WelcomeComponent },
-  { path: 'list-user', component: ListUserComponent },
-  { path: 'edit-user/:id', component: EditUserComponent }
+  { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard], canLoad:[AuthGuard] },
+  { path: 'list-user', component: ListUserComponent, canActivate: [AuthGuard], canLoad:[AuthGuard]},
+  { path: 'edit-user/:id', component: EditUserComponent, canActivate: [AuthGuard], canLoad:[AuthGuard] }
 ];
 
 
