@@ -1,1 +1,16 @@
-<p>resend-registration-token works!</p>
+<section class="grey-text w-responsive mx-auto p-5">
+    <form #resendTokenForm="ngForm">
+      <h1 class="h4 mb-4 text-center font-weight-bold">Solicitar novo token de verificação!</h1>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="text" class="form-control" id="email" placeholder="E-mail" 
+        required
+        [(ngModel)]="user.email" name="email" #email="ngModel">
+        <div [hidden]="email.valid || email.pristine"
+            class="alert alert-danger">
+            Favor digitar o e-mail
+        </div>
+      </div>    
+        <button  class="btn btn-dark btn-block" (click)="resendToken()" [disabled]="!resendTokenForm.form.valid">Entrar</button>
+    </form>
+  </section>

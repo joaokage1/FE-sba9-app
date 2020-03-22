@@ -1,1 +1,52 @@
 <p>register-user works!</p>
+<section class="grey-text w-responsive mx-auto p-5">
+    <form #RegisterUserForm="ngForm">
+        <h1 class="h4 mb-4 text-center font-weight-bold">Registre-se!</h1>
+        <div class="form-group">
+            <label for="firstName">Nome</label>
+            <input type="text" class="form-control" id="firstName" required placeholder="Nome de usuário" 
+            [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
+            <div [hidden]="firstName.valid || firstName.pristine"
+                 class="alert alert-danger">
+                 Favor digitar o Nome
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Sobrenome</label>
+            <input type="text" class="form-control" id="lastName" required placeholder="Sobrenome" 
+            [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel">
+            <div [hidden]="lastName.valid || lastName.pristine"
+                 class="alert alert-danger">
+                 Favor digitar o o Ultimo nome
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" class="form-control" id="email" required placeholder="E-mail" 
+            [(ngModel)]="user.email" name="email" #email="ngModel">
+            <div [hidden]="email.valid || email.pristine"
+                 class="alert alert-danger">
+                Favor digitar o email
+            </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="password">Senha</label>
+              <input type="password" class="form-control" id="password" required placeholder="Senha" 
+              [(ngModel)]="user.password" name="password" #password="ngModel">
+              <div [hidden]="password.valid || password.pristine"
+                   class="alert alert-danger">
+                  Favor digitar o Senha
+              </div>
+            </div>
+        <button *ngIf="!submitted"  class="btn btn-dark btn-block" (click)="save()" [disabled]="!RegisterUserForm.form.valid">Enviar</button>
+        <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Carregando...
+         </button>
+    </form>
+  
+  </section>
+  
