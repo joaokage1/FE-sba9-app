@@ -11,9 +11,9 @@ import { MessageService } from 'src/app/core/message.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private apiService: ApiService,
-    private router: Router,
-    private messageService: MessageService) { }
+  constructor(private apiService: ApiService, 
+              private router: Router,
+              private messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
       this.messageService.showError('Logout', 'Error ao tentar fazer logout');
     });
   }
-  clearLocalStore() {
+  clearLocalStore () {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('currentUser');
@@ -35,5 +35,4 @@ export class HeaderComponent implements OnInit {
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
   }
-
 }

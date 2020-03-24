@@ -9,16 +9,16 @@ import { take } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate, CanLoad {
 
-  constructor(private apiService: ApiService){}
+  constructor(private apiServece: ApiService) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.apiService.isAuthenticated().pipe(take(1));
+    return this.apiServece.isAuthenticated().pipe(take(1));
   }
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-    return this.apiService.isAuthenticated().pipe(take(1));
+    return this.apiServece.isAuthenticated().pipe(take(1));
   }
 }

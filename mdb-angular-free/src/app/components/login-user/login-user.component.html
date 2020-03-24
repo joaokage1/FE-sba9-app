@@ -22,10 +22,8 @@
             Favor digitar a senha!
         </div>
       </div>
-        <button *ngIf="!submitted" class="btn btn-dark btn-block" (click)="login()" [disabled]="!loginForm.form.valid">Entrar</button>
-        <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
-          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          Carregando...
-        </button>
+        <button class="btn btn-dark btn-block" (click)="login()" [disabled]="!loginForm.form.valid">Entrar</button>
+        <button class="btn btn-dark btn-block" type="button"> </button>
     </form>
   </section>
+  

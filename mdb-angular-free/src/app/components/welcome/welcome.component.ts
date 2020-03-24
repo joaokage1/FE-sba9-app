@@ -12,7 +12,7 @@ export class WelcomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 

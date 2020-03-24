@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserLogin } from 'src/app/core/model/login';
 import { ApiService } from 'src/app/core/api.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'src/app/core/message.service';
 
 @Component({
   selector: 'app-login-user',
@@ -12,16 +13,19 @@ export class LoginUserComponent implements OnInit {
 
   user = new UserLogin();
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, 
+              private router: Router,
+              private messageService: MessageService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   public login() {
     this.apiService.login(this.user).subscribe(data => {
       this.loginSuccess(data);
-    }, error =>{
-      alert('Erro ao fazer Login');
+      console.log(data);
+    }, error => {
+      this.messageService.showError('Login', 'Falha de autenticação');
     });
   }
 
@@ -31,12 +35,13 @@ export class LoginUserComponent implements OnInit {
     localStorage.setItem('refreshToken', data.refresh_token);
     this.apiService.getMainUser(localStorage.getItem('accessToken')).subscribe(user => {
       this.redirectPage(user);
-    }, error =>{
-      alert('Erro ao pegar usuário logado');
+      this.messageService.showSuccess('Bem Vindo ao Curso', 'Curso de Spring Boot e Angular 9');
+    }, error => {
+      this.messageService.showError('Usuário principal', 'Falha ao carregar usuário principal');
     });
   }
 
-  public redirectPage(user: any) {
+  public  redirectPage(user: any) {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.router.navigate(['welcome']);
   }

@@ -1,1 +1,34 @@
-<p>list-user works!</p>
+<section class="grey-text w-responsive mx-auto p-5">    
+  <h2 class="h4 mb-4 text-center font-weight-bold"> Lista de Usuários</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>E-mail</th>
+      <th>Situação</th>
+      <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users; let i = index;">
+      <td class="hidden">{{i+1}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.enabled}}</td>
+      <td>{{getRole(user)}}</td>
+      <td>
+        <div class="btn-group btn-group-sm">
+          <button class="btn btn-danger " (click)="deleteUserModal.show()"> Excluir</button>
+          <button class="btn btn-info " [routerLink]="['/edit-user', user.id]" style="margin-left:20px;"> Editar</button>
+
+        </div>
+      </td>
+      <app-delete-user-modal #deleteUserModal [recebeItem]="user" (resposta)="deleteUser($event)"></app-delete-user-modal>
+      
+    </tr>
+    </tbody>
+  </table>
+</section>

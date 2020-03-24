@@ -1,1 +1,44 @@
-<p>delete-user-modal works!</p>
+
+
+  <div mdbModal #deleteUserModal="mdb-modal" class="modal fade right" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" (close)="onClose($event)">
+  <div class="modal-dialog modal-notify modal-danger modal-side modal-top-right" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h1 class="heading">{{recebeTitulo}}</h1>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="deleteUserModal.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-3">
+            <p></p>
+            <p class="text-center">
+              <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="Sample image">
+            </p>
+          </div>
+
+          <div class="col-9">
+            <p>{{recebePergunta}}</p>
+          </div>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a (click)="delete()" type="button" mdbBtn color="danger" outline="true" class="waves-effect" mdbWavesEffect>Confirmar
+          <i class="fa fa-diamond ml-1"></i>
+        </a>
+        <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="deleteUserModal.hide()" data-dismiss="modal">Cancelar</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
