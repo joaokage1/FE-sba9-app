@@ -95,7 +95,7 @@ export class ApiService {
     }
   }
   deleteUser(id: string): Observable<any> {
-    return this.httpClient.delete<any>(`${this.baseUrl}/${id}}`, AppUtils.OPTIONS_OBJECT);
+    return this.httpClient.delete<any>(`${this.baseUrl}/${id}`, AppUtils.OPTIONS_OBJECT);
   }
   getUserById(id: string): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}/${id}`, AppUtils.OPTIONS_OBJECT);
