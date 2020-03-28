@@ -31,10 +31,12 @@ export class RegisterUserComponent implements OnInit, OnDestroy {
   save(): void {
     this.submitted = true;
     this.apiService.registerUser(this.user).subscribe(data => {
+      this.submitted = false;
      this.messageService.showSuccess('Cadastro de Usuário',
      'Usuário regsitrado com sucesso, favor ferificar o seu e-mail para confirmar o seu cadastro!');
      this.goBack();
     }, error => {
+      this.submitted = false;
       this.messageService.showError('Cadastro de usuário', 'Falha ao tentar registrar!');
     });
   }

@@ -1,8 +1,6 @@
-<app-header></app-header>
+<app-header *ngIf = "isAuthenticated() | async"></app-header>
 <!-- Main -->
-<main>
- <div class="container-fluid ">
+<main class="view grey lighten-3">
  <router-outlet></router-outlet>
- </div>
 </main>
 <!-- /.Main -->

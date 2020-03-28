@@ -1,50 +1,82 @@
-<section class="grey-text w-responsive mx-auto p-5">
-  <form #RegisterUserForm="ngForm">
-      <h1 class="h4 mb-4 text-center font-weight-bold">Registre-se!</h1>
-      <div class="form-group">
-          <label for="firstName">Nome</label>
-          <input type="text" class="form-control" id="firstName" required placeholder="Nome de usuário" 
-          [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
-          <div [hidden]="firstName.valid || firstName.pristine"
-               class="alert alert-danger">
-               Favor digitar o Nome
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="lastName">Sobrenome</label>
-          <input type="text" class="form-control" id="lastName" required placeholder="Sobrenome" 
-          [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel">
-          <div [hidden]="lastName.valid || lastName.pristine"
-               class="alert alert-danger">
-               Favor digitar o o Ultimo nome
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">E-mail</label>
-          <input type="text" class="form-control" id="email" required placeholder="E-mail" 
-          [(ngModel)]="user.email" name="email" #email="ngModel">
-          <div [hidden]="email.valid || email.pristine"
-               class="alert alert-danger">
-              Favor digitar o email
-          </div>
-        </div>
+<!-- Main navigation -->
+<!-- Full Page Intro -->
+<div class="view grey lighten-3">
+  <!-- Content -->
+  <div>
+    <!--Grid row-->
+    <div class="row align-items-center">
+      <!--Grid column-->
+      <div class="col-md-6">
+        <h1 class="mb-4">Com o cadastro <span class="text-warning">realizado e confirmado</span><br><span
+            class="cyan-text">vamos</span> acessar.</h1>
+        <form #RegisterUserForm="ngForm">
 
-        <div class="form-group">
-            <label for="password">Senha</label>
-            <input type="password" class="form-control" id="password" required placeholder="Senha" 
-            [(ngModel)]="user.password" name="password" #password="ngModel">
-            <div [hidden]="password.valid || password.pristine"
-                 class="alert alert-danger">
-                Favor digitar o Senha
+
+
+          <div class="card">
+            <div class="card-body z-depth-2 px-4">
+              <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <input type="text" class="form-control" id="firstName" required [(ngModel)]="user.firstName"
+                  name="firstName" #firstName="ngModel" mdbInput mdbValidate>
+                <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+                  Favor digitar o Nome
+                </div>
+                <label for="firstName">Nome</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <input type="text" class="form-control" id="lastName" required
+                  [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel"  mdbInput mdbValidate>
+                <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+                  Favor digitar o o Ultimo nome
+                </div>
+                <label for="lastName">Sobrenome</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <input type="text" id="email" class="form-control" required [(ngModel)]="user.email" name="email"
+                  #email="ngModel" mdbInput mdbValidate>
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                  Favor digitar o nome de usuário!
+                </div>
+                <label for="email">Email</label>
+              </div>
+              <div class="md-form">
+                <i class="fas fa-key prefix grey-text"></i>
+                <input type="password" id="password" class="form-control" required [(ngModel)]="user.password"
+                  name="password" #password="ngModel" mdbInput mdbValidate>
+                <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                  Favor digitar a senha!
+                </div>
+                <label for="password">Senha</label>
+              </div>
+              <div class="text-center my-3">
+                <button *ngIf="!submitted" class="btn btn-dark btn-block" (click)="save()"
+                  [disabled]="!RegisterUserForm.form.valid">Enviar</button>
+                <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Carregando...
+                </button>
+              </div>
             </div>
           </div>
-      <button *ngIf="!submitted"  class="btn btn-dark btn-block" (click)="save()" [disabled]="!RegisterUserForm.form.valid">Enviar</button>
-      <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        Carregando...
-       </button>
-  </form>
+        </form>
 
-</section>
+        <div class="text-center my-3">
+          <p>Já fez o cadastro ? <a [routerLink]="['/login']"> Logar</a></p>
+        </div>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6">
+        <img src="https://mdbootstrap.com/img/illustrations/hiker-man-colour.svg" alt="" class="img-fluid">
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Content -->
+</div>
+<!-- Full Page Intro -->

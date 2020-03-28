@@ -20,6 +20,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MessageService } from './core/message.service';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MessageService } from './core/message.service';
     ListUserComponent,
     WelcomeComponent,
     HeaderComponent,
-    DeleteUserModalComponent
+    DeleteUserModalComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

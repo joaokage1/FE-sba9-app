@@ -1,32 +1,36 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark default-color ie-nav" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
   <mdb-navbar-brand>
     <a class="logo navbar-brand" routerLink="/welcome"><strong>Curso - Spring Boot e
         Angular 9</strong></a>
   </mdb-navbar-brand>
   <links>
     <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item waves-light" *ngIf="!(isAutenticated() | async)" mdbWavesEffect>
-        <a class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
-      </li>
-      <li class="nav-item waves-light" *ngIf="!(isAutenticated() | async)" mdbWavesEffect>
-        <a class="nav-link" routerLink="resend-register-token" routerLinkActive="active">Reenviar email de confirmação</a>
-      </li>
-      <li class="nav-item waves-light" *ngIf="!(isAutenticated() | async)" mdbWavesEffect>
-        <a class="nav-link" routerLink="register-user" routerLinkActive="active">Registre-se</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item waves-light py-1 mx-3" *ngIf="isAutenticated() | async" mdbWavesEffect>
-        <a class="nav-link" routerLink="list-user" routerLinkActive="active">Usuários</a>
-      </li>
-      <li class="nav-item dropdown" *ngIf="isAutenticated() | async" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdowntoggle waves-light" mdbWavesEffect>
-          <img src="../../assets/img/man.png" class="img-fluid rounded-circle z-depth-0">
-          <span class="caret"></span>
+      <li class="nav-item ">
+        <a class="nav-link">
+          <mdb-icon fab icon="twitter"></mdb-icon>
         </a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Sair</a>
-        </div>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link">
+          <mdb-icon fab icon="google-plus"></mdb-icon>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link">
+          <mdb-icon fab icon="facebook"></mdb-icon>
+        </a>
+      </li>
+      <li class="nav-item" dropdown>
+        <a class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <mdb-icon fas icon='user' mdbDropdownToggle></mdb-icon>
+            <span class="badge green">{{users?.length}}</span>
+            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+              <a class="dropdown-item" [routerLink] = "['/list-user']"> Usuários <span class="badge green">{{users?.length}}</span></a>
+              <a class="dropdown-item"  (click)="logout()"> Sair </a>
+            </div>
+          </div>
+        </a>
       </li>
     </ul>
   </links>

@@ -7,10 +7,11 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
-  { path : '', component : LoginUserComponent},
+  { path : '', component : HomeComponent},
    { path: 'login', component: LoginUserComponent },
    { path: 'register-user', component: RegisterUserComponent },
    { path: 'resend-register-token', component: ResendRegistrationTokenComponent },
